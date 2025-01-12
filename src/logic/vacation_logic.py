@@ -1,4 +1,8 @@
+
+import sys
+sys.path.append('c:/Users/User/OneDrive/Documents/GitHub/vacation-system')
 from src.utils.dal import DAL
+
 
 class VacationLogic:
     def __init__(self):
@@ -26,6 +30,8 @@ class VacationLogic:
         params = (id,)
         result = self.dal.get_table(query , params)
         return result
+    def added_vacations(self):
+        pass
 
 
 if __name__ == "__main__":
