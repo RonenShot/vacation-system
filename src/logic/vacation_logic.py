@@ -26,7 +26,8 @@ class VacationLogic:
         params = (id,)
         result = self.dal.get_table(query , params)
         return result
-
+    def add_vacation(self):
+        pass
 
 if __name__ == "__main__":
     v = VacationLogic()
