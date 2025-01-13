@@ -1,12 +1,12 @@
 import mysql.connector
-
+import os
 class DAL:
     def __init__(self):
         try:
             self.connection = mysql.connector.connect(
             host = "localhost",
             user = "root",
-            password = "ronen123456",
+            password = os.getenv('DB_PASSWORD'),
             database = "vacationsdatabase",
             autocommit = True
             )
