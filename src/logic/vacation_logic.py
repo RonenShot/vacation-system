@@ -1,6 +1,3 @@
-
-import sys
-sys.path.append('c:/Users/User/OneDrive/Documents/GitHub/vacation-system')
 from src.utils.dal import DAL
 
 
