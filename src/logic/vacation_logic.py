@@ -48,17 +48,7 @@ class VacationLogic:
         if not kwargs:
             return False
 
-        clause = ", ".join([f"{k} = %s" for k in kwargs.keys()])
-
-        params = tuple(kwargs.values()) + (id,)
-        query = f"UPDATE vacationsdatabase.vacations SET {clause} WHERE vacation_id = %s"
-
-        try:
-            self.dal.update(query, params)
-            return True
-        except Exception as e:
-            print(f"Error updating vacation: {e}")
-            return False
+        
 
 if __name__ == "__main__":
     v = VacationLogic()
