@@ -19,8 +19,12 @@ class UserLogic:
             (%s, %s, %s, %s, %s , %s )
             """
             params = (first_name , last_name , email , password , date_of_birth , role_id)
-            self.dal.insert(query, params)
-            return True
+            try:
+              self.dal.insert(query, params)
+              return True
+            except Exception as e:
+                print(f"There was error to register: {e}")
+                return False
      def find_user(self , email):
          try: 
              query = "SELECT * FROM vacationsdatabase.users where email = %s"
@@ -42,13 +46,21 @@ class UserLogic:
          if result:
              print("loged in")
          else: 
-             print("Wrong password")  
+             print("Wrong password") 
+     def find_user_role(self, id):
+         query = "select u.role_id from users u where u.user_id = %s"
+         params = (id,)
+         result = self.dal.get_table(query , params)
+         return result
+         
      
         
 if __name__=="__main__":
     ul = UserLogic()
     #ul.user_register("bob" ,"taylor" ,"bob.taylor@example.com" , "hashed_password_4" , "1980-07-24" , "1")
     ul.user_register("ronen" , "shotlender" , "skmvx123@gmail.com" , "123456" , "2006-05-08" , "1")
+    res = ul.find_user_role(2)
+    print(res)
 
         
     
